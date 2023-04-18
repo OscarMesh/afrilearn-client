@@ -6,7 +6,7 @@ import { CiSearch } from "react-icons/ci";
 import NoResults from "../../components/NoResults";
 import Head from "next/head";
 
-const index = () => {
+const SubjectPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [subjects, setSubjects] = useState<Subject[]>([]);
 
@@ -65,4 +65,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default SubjectPage;
