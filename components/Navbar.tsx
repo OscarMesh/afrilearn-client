@@ -11,9 +11,9 @@ const Navabar = () => {
             <Image
               src="https://myafrilearn.com/_next/image?url=%2Fassets%2Fimg%2Flogonew.png&w=256&q=75"
               alt="logo"
-              width={200}
-              height={200}
               loading="lazy"
+              width={100}
+              height={100}
               className="object-cover"
             />
           </Link>
