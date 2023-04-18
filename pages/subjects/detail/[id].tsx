@@ -2,6 +2,7 @@ import axios from "axios";
 import { Subject } from "../../../types";
 import NoResults from "../../../components/NoResults";
 import TopicCard from "../../../components/TopicCard";
+import Head from "next/head";
 
 type Props = {
   subject: Subject;
@@ -9,21 +10,28 @@ type Props = {
 
 export default function SubjectPage({ subject }: Props) {
   return (
-    <div className="mt-6 lg:p-0 md:p-5 p-3">
-      <h1 className="text-center font-bold text-[#29465b] text-[20px]">
-        {subject.name}
-      </h1>
-      <h2 className="font-bold text-[#29465b] text-[20px]">Topics</h2>
-      <div className="flex flex-col gap-10 mt-4 h-full">
-        {subject.topics.length ? (
-          subject.topics.map((topic) => (
-            <TopicCard key={topic._id} topic={topic} />
-          ))
-        ) : (
-          <NoResults text="No topic" />
-        )}
+    <>
+      <Head>
+        <title>Afrilearn Project Demo</title>
+        <meta name="description" content="An Afrilearn interview demo" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className="mt-6 lg:p-0 md:p-5 p-3">
+        <h1 className="text-center font-bold text-[#29465b] text-[20px]">
+          {subject.name}
+        </h1>
+        <h2 className="font-bold text-[#29465b] text-[20px]">Topics</h2>
+        <div className="flex flex-col gap-10 mt-4 h-full">
+          {subject.topics.length ? (
+            subject.topics.map((topic) => (
+              <TopicCard key={topic._id} topic={topic} />
+            ))
+          ) : (
+            <NoResults text="No topic" />
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

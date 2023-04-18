@@ -4,6 +4,7 @@ import axios from "axios";
 import SubjectCard from "../../components/SubjectCard";
 import { CiSearch } from "react-icons/ci";
 import NoResults from "../../components/NoResults";
+import Head from "next/head";
 
 const index = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -26,34 +27,41 @@ const index = () => {
   };
 
   return (
-    <div className="mt-6 lg:p-0 md:p-5 p-3">
-      <div className=" flex md:flex-row md:justify-between flex-col items-center justify-center gap-4 mb-6 ">
-        <h3 className="font-bold text-[#29465b] text-[20px]">
-          Find your perfect subjects and on-the-go
-        </h3>
-        <div className="flex flex-row max-w-[400px] w-full  p-3 items-center justify-between rounded-lg  border ">
-          <input
-            type="text"
-            placeholder="Search Subjects..."
-            className="outline-none border-none text-[#29465b]"
-            value={searchQuery}
-            onChange={handleSearch}
-          />
-          <button type="submit">
-            <CiSearch color="#29465b" size={30} />
-          </button>
+    <>
+      <Head>
+        <title>Afrilearn Project Demo</title>
+        <meta name="description" content="An Afrilearn interview demo" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className="mt-6 lg:p-0 md:p-5 p-3">
+        <div className=" flex md:flex-row md:justify-between flex-col items-center justify-center gap-4 mb-6 ">
+          <h3 className="font-bold text-[#29465b] text-[20px]">
+            Find your perfect subjects and on-the-go
+          </h3>
+          <div className="flex flex-row max-w-[400px] w-full  p-3 items-center justify-between rounded-lg  border ">
+            <input
+              type="text"
+              placeholder="Search Subjects..."
+              className="outline-none border-none text-[#29465b]"
+              value={searchQuery}
+              onChange={handleSearch}
+            />
+            <button type="submit">
+              <CiSearch color="#29465b" size={30} />
+            </button>
+          </div>
+        </div>
+        <div className="flex flex-col gap-10 videos h-full">
+          {subjects.length ? (
+            subjects.map((subject: Subject) => (
+              <SubjectCard subject={subject} key={subject._id} />
+            ))
+          ) : (
+            <NoResults text="No Subject...🥺 " />
+          )}
         </div>
       </div>
-      <div className="flex flex-col gap-10 videos h-full">
-        {subjects.length ? (
-          subjects.map((subject: Subject) => (
-            <SubjectCard subject={subject} key={subject._id} />
-          ))
-        ) : (
-          <NoResults text="No Subject...🥺 " />
-        )}
-      </div>
-    </div>
+    </>
   );
 };
 
