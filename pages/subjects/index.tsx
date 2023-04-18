@@ -3,10 +3,7 @@ import { Subject } from "../../types";
 import axios from "axios";
 import SubjectCard from "../../components/SubjectCard";
 import { CiSearch } from "react-icons/ci";
-
-interface IProps {
-  subjects: Subject[];
-}
+import NoResults from "../../components/NoResults";
 
 const index = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -48,9 +45,13 @@ const index = () => {
         </div>
       </div>
       <div className="flex flex-col gap-10 videos h-full">
-        {subjects.map((subject: Subject) => (
-          <SubjectCard subject={subject} key={subject._id} />
-        ))}
+        {subjects.length ? (
+          subjects.map((subject: Subject) => (
+            <SubjectCard subject={subject} key={subject._id} />
+          ))
+        ) : (
+          <NoResults text="No Subject...🥺 " />
+        )}
       </div>
     </div>
   );
