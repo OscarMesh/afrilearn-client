@@ -28,7 +28,9 @@ export default function SubjectPage({ subject }: Props) {
 }
 
 export async function getStaticPaths() {
-  const { data } = await axios.get("http://localhost:5000/api/v1/subjects");
+  const { data } = await axios.get(
+    "https://afrilearn-interview-api.onrender.com/api/v1/subjects"
+  );
   const subjects = data.subjects;
 
   const paths = subjects.map((subject: any) => ({
@@ -40,7 +42,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params: { id } }: any) {
   const { data } = await axios.get(
-    `http://localhost:5000/api/v1/subjects/${id}`
+    `https://afrilearn-interview-api.onrender.com/api/v1/subjects/${id}`
   );
   const subject = data.subject;
 

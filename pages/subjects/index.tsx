@@ -12,7 +12,7 @@ const index = () => {
   useEffect(() => {
     const fetchSubjects = async () => {
       const { data } = await axios.get(
-        `http://localhost:5000/api/v1/subjects${
+        `https://afrilearn-interview-api.onrender.com/api/v1/subjects${
           searchQuery ? `?name=${searchQuery}` : ""
         }`
       );
